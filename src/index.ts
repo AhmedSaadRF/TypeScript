@@ -66,6 +66,13 @@ if (coloring === Color.Red) {
   console.log(Color.Red);
 }
 
+export enum BookingStatus {
+  PENDING,
+  CONFIRMED,
+  CANCELLED,
+}
+const bookingStatus: BookingStatus = BookingStatus.CONFIRMED;
+
 // Classes
 class Car {
   name: string;
@@ -110,6 +117,64 @@ class Car3 implements IVehicle2 {
 }
 const c3 = new Car3("Ford", 2020);
 
-// Exporting Interfaces
+// Generic
+function greet<T>(name: T): string {
+  return `Hello ${name}`;
+}
+console.log(greet("John"));
+greet<number>(1);
+
+// General Objects Types
+const obj2:{[key:string]:any} = {
+  name: "John",
+  age: 30,
+};
+obj2.username = "Jane";
+
+// Omit
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+const user: Omit<User, "email"> = {
+  id: "1",
+  name: "John",
+};
+
+// Pick
+interface User1 {
+  id: string;
+  name: string;
+  email: string;
+}
+const user2: Pick<User1, "id" | "name"> = {
+  id: "1",
+  name: "John",
+};
+
+// Partial
+interface User2 {
+  id: string;
+  name: string;
+  email: string;
+}
+const user3: Partial<User2> = {
+  id: "1",
+  name: "John",
+};
+
+// Required
+interface User3 {
+  id?: string;
+  name?: string;
+  email?: string;
+}
+const user4: Required<User3> = {
+  id: "1",
+  name: "John",
+  email: "john@gmail.com",
+};
+
 
 
